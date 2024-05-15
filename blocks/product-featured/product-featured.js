@@ -5,17 +5,17 @@ export default function decorate(block) {
   const sectionWrapper = document.createElement('section');
 
   block.querySelectorAll('h1').forEach((title) => {
-    title.classList.add(`${classPrefix}_title`);
+    title.classList.add(`${classPrefix}-title`);
     title.removeAttribute('id');
   });
 
   block.querySelectorAll('h2').forEach((description) => {
-    description.classList.add(`${classPrefix}_description`);
+    description.classList.add(`${classPrefix}-description`);
     description.removeAttribute('id');
   });
 
   block.querySelectorAll('h3').forEach((price) => {
-    price.classList.add(`${classPrefix}_price`);
+    price.classList.add(`${classPrefix}-price`);
     price.removeAttribute('id');
   });
 
@@ -25,10 +25,10 @@ export default function decorate(block) {
     const pictureContainer = pictureEl.closest('p');
     const newPicture = createOptimizedPicture(img.src, img.alt, false, [{ width: '750' }]);
     const newPictureWrapper = document.createElement('div');
-    newPictureWrapper.classList.add(`${classPrefix}_image-wrapper`);
-    newPicture.classList.add(`${classPrefix}_image`);
+    newPictureWrapper.classList.add(`${classPrefix}-image-wrapper`);
+    newPicture.classList.add(`${classPrefix}-image`);
     if (pictureLinkEl) {
-      pictureLinkEl.classList.add(`${classPrefix}_link`);
+      pictureLinkEl.classList.add(`${classPrefix}-link`);
       pictureLinkEl.replaceChildren(newPicture);
       newPictureWrapper.replaceChildren(pictureLinkEl);
     } else {

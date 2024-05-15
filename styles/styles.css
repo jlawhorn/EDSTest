@@ -48,7 +48,6 @@
   --color-action-button-hover: var(--color-neutral-300);
   --color-opacity-16: rgb(255 255 255 / 16%);
   --color-opacity-24: rgb(255 255 255 / 24%);
-
   --grid-1-columns: 4;
   --grid-1-margins: 0;
   --grid-1-gutters: 16px;
@@ -64,7 +63,6 @@
   --grid-5-columns: 12;
   --grid-5-margins: 0;
   --grid-5-gutters: 24px;
-
   --shape-border-radius-1: 3px;
   --shape-border-radius-2: 8px;
   --shape-border-radius-3: 24px;
@@ -79,7 +77,6 @@
   --shape-icon-stroke-2: 1.5px;
   --shape-icon-stroke-3: 2px;
   --shape-icon-stroke-4: 4px;
-
   --spacing-xxsmall: 4px;
   --spacing-xsmall: 8px;
   --spacing-small: 16px;
@@ -93,7 +90,6 @@
   --spacing-huge: 120px;
   --spacing-xhuge: 144px;
   --spacing-xxhuge: 192px;
-
   --font-size-10: 1rem;
   --font-size-20: 1.2rem;
   --font-size-30: 1.4rem;
@@ -101,13 +97,11 @@
   --font-size-50: 1.8rem;
   --font-size-60: 2rem;
   --font-size-70: 2.4rem;
-
   --font-weight-10: 100;
   --font-weight-20: 400;
   --font-weight-30: 500;
   --font-weight-40: 600;
   --font-weight-50: 700;
-
   --type-base-font-family: roboto, roboto-fallback;
   --type-display-1-font: normal normal 300 6rem/7.2rem
     var(--type-base-font-family);
