@@ -12,6 +12,7 @@ import {
   sampleRUM,
   waitForLCP,
 } from './aem.js';
+import initializeDropins from './dropins.js';
 
 const LCP_BLOCKS = [
   'product-list-page',
