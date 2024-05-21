@@ -22,6 +22,8 @@ export default async function decorate(block) {
   // Initialize Drop-ins
   initializers.register(product.initialize, {});
 
+  window.addEventListener('load', initializers.mount);
+
   // Set Fetch Endpoint (Service)
   product.setEndpoint(await getConfigValue('commerce-endpoint'));
 
@@ -41,10 +43,20 @@ export default async function decorate(block) {
   return productRenderer.render(ProductDetails, {
     sku: getSkuFromUrl(),
     carousel: {
-      controls: 'dots', // 'thumbnailsColumn', 'thumbnailsRow', 'dots'
+      controls: 'thumbnailsRow', // 'thumbnailsColumn', 'thumbnailsRow', 'dots'
       mobile: true,
+      loopable: true,
     },
+    onAddToCart: (values) => console.log('Added to cart', values),
     slots: {
+      SKU: (ctx) => {
+        // Rating
+        const ratingEl = document.createElement('div');
+        ratingEl.classList.add('rating-summary');
+        ratingEl.innerHTML = '☆☆☆☆☆ 0 Ratings';
+        console.log(ctx);
+        ctx.appendSibling(ratingEl);
+      },
       Actions: (ctx) => {
         // Add to Cart Button
         ctx.appendButton((next, state) => {
