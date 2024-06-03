@@ -17,6 +17,10 @@ export const priceFieldsFragment = `fragment priceFields on ProductViewPrice {
   }
 }`;
 
+export const reviewSummaryFragment = `fragment ProductReviewDetails on ProductReview {
+  average_rating
+}`;
+
 /* Queries PDP */
 export const refineProductQuery = `query RefineProductQuery($sku: String!, $variantIds: [String!]!) {
   refineProduct(
@@ -55,6 +59,7 @@ export const productDetailQuery = `query ProductQuery($sku: String!) {
     sku
     name
     description
+    rating_summary
     shortDescription
     urlKey
     inStock
@@ -101,6 +106,14 @@ export const productDetailQuery = `query ProductQuery($sku: String!) {
   }
 }
 ${priceFieldsFragment}`;
+
+/* Queries Reviews */
+
+export const productReviewRatingsMetadataQuery = `query ProductQuery($sku: String!) {
+  products(skus: [$sku]) {
+    rating_summary
+  }
+}`;
 
 /* Common functionality */
 
@@ -247,6 +260,26 @@ export async function getProduct(sku) {
   });
 
   productsCache[sku] = productPromise;
+  return productPromise;
+}
+
+const productsReviewCache = {};
+export async function getProductReviews(sku) {
+  // eslint-disable-next-line no-param-reassign
+  sku = sku.toUpperCase();
+  if (productsReviewCache[sku]) {
+    return productsReviewCache[sku];
+  }
+  const rawProductPromise = performCatalogServiceQuery(productReviewRatingsMetadataQuery, { sku });
+  const productPromise = rawProductPromise.then((productData) => {
+    if (!productData?.products?.[0]) {
+      return null;
+    }
+
+    return productData?.products?.[0];
+  });
+
+  productsReviewCache[sku] = productPromise;
   return productPromise;
 }
 

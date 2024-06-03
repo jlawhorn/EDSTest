@@ -62,6 +62,7 @@ export const productSearchQuery = (addCategory = false) => `query ProductSearch(
               name
               sku
               urlKey
+              rating_summary
               images(roles: "thumbnail") {
                 url
               }

@@ -15,7 +15,7 @@ import { render as productRenderer } from '@dropins/storefront-pdp/render.js';
 import ProductDetails from '@dropins/storefront-pdp/containers/ProductDetails.js';
 
 // Libs
-import { getSkuFromUrl } from '../../scripts/commerce.js';
+import { getSkuFromUrl, getProductReviews } from '../../scripts/commerce.js';
 import { getConfigValue } from '../../scripts/configs.js';
 
 export default async function decorate(block) {
@@ -40,6 +40,8 @@ export default async function decorate(block) {
 
   // Render Containers
 
+  console.log('test', await getProductReviews(getSkuFromUrl()));
+
   return productRenderer.render(ProductDetails, {
     sku: getSkuFromUrl(),
     carousel: {
@@ -54,7 +56,7 @@ export default async function decorate(block) {
         const ratingEl = document.createElement('div');
         ratingEl.classList.add('rating-summary');
         ratingEl.innerHTML = '☆☆☆☆☆ 0 Ratings';
-        console.log(ctx);
+        console.log('context', ctx);
         ctx.appendSibling(ratingEl);
       },
       Actions: (ctx) => {
